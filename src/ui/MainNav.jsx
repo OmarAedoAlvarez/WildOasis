@@ -1,4 +1,13 @@
 import styled from "styled-components";
+import React, { Component } from "react";
+import { NavLink } from "react-router-dom";
+import {
+  HiOutlineCalendarDays,
+  HiOutlineCog6Tooth,
+  HiOutlineHome,
+  HiOutlineHomeModern,
+  HiOutlineUsers,
+} from "react-icons/hi2";
 
 const NavList = styled.ul`
   display: flex;
@@ -6,7 +15,7 @@ const NavList = styled.ul`
   gap: 0.8rem;
 `;
 
-const Link = styled.a`
+const StyledNavLinked = styled(NavLink)`
   &:link,
   &:visited {
     display: flex;
@@ -18,6 +27,7 @@ const Link = styled.a`
     font-weight: 500;
     padding: 1.2rem 2.4rem;
     transition: all 0.3s;
+    margin-bottom: 0.8rem;
   }
 
   /* This works because react-router places the active class on the active NavLink */
@@ -44,3 +54,38 @@ const Link = styled.a`
     color: var(--color-brand-600);
   }
 `;
+
+function MainNav() {
+  return (
+    <nav>
+      <ul>
+        <li>
+          <StyledNavLinked to="/dashboard">
+            <HiOutlineHome />
+            <span>Home</span>
+          </StyledNavLinked>
+        </li>
+        <li>
+          <StyledNavLinked to="/bookings">
+            <HiOutlineCalendarDays />
+            <span>Bookings</span>
+          </StyledNavLinked>
+          <StyledNavLinked to="/cabins">
+            <HiOutlineHomeModern />
+            <span>Cabins</span>
+          </StyledNavLinked>
+          <StyledNavLinked to="/users">
+            <HiOutlineUsers />
+            <span>Users</span>
+          </StyledNavLinked>
+          <StyledNavLinked to="/settings">
+            <HiOutlineCog6Tooth />
+            <span>Settings</span>
+          </StyledNavLinked>
+        </li>
+      </ul>
+    </nav>
+  );
+}
+
+export default MainNav;
